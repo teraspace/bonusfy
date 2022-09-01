@@ -1,6 +1,9 @@
 module Query
   class PurchaseFilter
     def self.call(filters)
+      # Review: Me gusta tu propuesta de utilizar este módulo.
+      #         Como tip, ransack promete harto, no lo he utilizado pero pinta bien.
+      #         Faltó el filtro por categoría, nada grave.
       scope = Purchase.includes(product: :category).all
       
       if filters[:units].present?

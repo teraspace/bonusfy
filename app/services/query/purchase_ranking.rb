@@ -21,6 +21,9 @@ module Query
     end
 
     def rankings_sales
+      # Review: Estuvo bien implementar esto con PARTITION. Lo que se puede mejorar es la legibilidad de código
+      #         No está directa la visibilidad de la dependencia de los métodos, es más, creo que total_sales no sería necesario
+      #         Con product_sales debería ser suficiente, hay como doble join o query a la tabla de purchases. Nada grave.
       total_sales.group('products_sales.id, products_sales.product')
       .select(
              'products_sales.id product_id, 

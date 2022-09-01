@@ -12,6 +12,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    # Review: Como adicional a lo requerido, se agregadecen los índices a la tabla de productos.
     add_index :products, :created_at, name: "index_products_on_created_at"
     add_index :products, "(extra->>'color')", name: "index_products_on_extra_color"
     add_index :products, "(extra->>'material')", name: "index_products_on_extra_material"

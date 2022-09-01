@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authorized, only: [:auto_login], except: [:create]
 
 
-
+  # Review: Se agradece la doc.
   api :POST, '/users', 'Create an user'
   param :user, Hash do
     param :name, String, 'Name of the user'
@@ -10,6 +10,16 @@ class UsersController < ApplicationController
     param :password, String, 'Password'
   end
   def create
+    # Review: Otra opción sería, respecto a legibilidad de código.
+
+    # if User.create(user_params)
+    #    render json: user.to_json(only: ..., methods: :token)
+    # else
+    #   render json: user.errors
+    # end
+    #
+    # Lo mismo para los otros endpoints de este controlador.
+
     @user = User.create(user_params)
 
     raise 'Invalid user' unless @user.valid?
