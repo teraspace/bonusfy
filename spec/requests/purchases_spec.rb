@@ -36,6 +36,8 @@ RSpec.describe 'PurchasesController', type: :request do
     end
 
     context 'purchases filters' do
+      # Review: Queda demostrado tu conocimiento en rspec.
+      #         Tip: mejor si se hubiése testeado todas las combinaciones de parámetro con metraprograming quizás.
 
       it 'filter by date' do
         params  = {page: 1, per_page: 10, start_date: Time.zone.now - 1.hour, end_date: Time.zone.now}
